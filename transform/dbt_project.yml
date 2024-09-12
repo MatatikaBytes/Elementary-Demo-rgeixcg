@@ -28,6 +28,7 @@ models:
     +meta:
       schema_name: matatika_test_results
   tap_googleads: {}
+  matatika_elementary: {}
 on-run-end:
 - '{{ centralize_test_failures(results) }}'
 tests:
@@ -35,4 +36,6 @@ tests:
 vars:
   tests_schema: matatika_test_results
   tap_googleads:
+    schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+  matatika_elementary:
     schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
