@@ -1,6 +1,6 @@
 version: pipelines/v0.1
 name: Google Ads
-timeout: 0
+timeout: 7200
 max_retries: 0
 data_components:
 - tap-googleads
