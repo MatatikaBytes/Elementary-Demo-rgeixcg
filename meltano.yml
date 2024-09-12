@@ -5,3 +5,37 @@ environments:
 - name: dev
 - name: staging
 - name: prod
+plugins:
+  extractors:
+  - name: tap-googleads
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-googleads@v0.5.0
+  loaders:
+  - name: target-postgres
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.2.0
+  transforms:
+  - name: dbt-googleads
+    variant: matatika
+    pip_url: https://github.com/Matatika/dbt-tap-googleads@v0.4.0
+  transformers:
+  - name: dbt
+    variant: dbt-labs
+    pip_url: "dbt-core~=1.3.0 dbt-postgres~=1.3.0 dbt-snowflake~=1.3.0\n"
+  files:
+  - name: files-dbt
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/files-dbt@v1.0.x.2
+  - name: analyze-dbt-models
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/analyze-dbt-models@v0.2.0
+  - name: analyze-googleads
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/analyze-googleads@v0.5.0
+  utilities:
+  - name: matatika
+    variant: matatika
+    pip_url: matatika~=1.16.0
+  - name: dbt-artifacts
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/dbt-artifacts-ext.git
