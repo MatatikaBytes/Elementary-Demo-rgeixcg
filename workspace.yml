@@ -1,6 +1,142 @@
+# This file is managed by the 'app-elementary' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files app-elementary set _update workspace.yml false
+
 version: workspaces/v0.1
-name: Elementary Demo
 app_properties:
+  DASHBOARD_CONTENT: |-
+    <style jsx>{`
+      .grey-border-right {border-right: 2px solid #D3D3D3}
+      .grey-box {
+        border: 1px solid #D3D3D3;
+        border-radius: 20px;
+        padding: 30px;
+        flex-direction: column;
+      }
+      .text-center {
+        text-align: center;
+        justify-content: center;
+      }
+      .chart-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .metric-width {
+        min-width: 275px;
+      }
+      .chart-div > div {max-width: 400px}
+      @media screen and (max-width: 1449px) {
+        .grey-border-right {
+          border-right: none;
+        }
+        .grey-box, .text-center, .chart-div {
+          display: block;
+          margin: auto;
+        }
+        .chart-div > div {
+          display: block;
+          margin: auto;
+          padding-top: 10px;
+        }
+      }
+      @media screen and (min-width: 1450px) {
+        .grey-box, .text-center, .chart-div {
+          display: flex;
+        }
+        .grey-border-right {
+          border-right: 2px solid #D3D3D3;
+        }
+      }
+    `}</style>
+    <div style={{'padding': '10px'}}>
+      <div style={{'display': 'flex', 'justify-content': 'right'}}>
+        <DownloadResource path="elementary.html" tooltip="Download full report" />
+      </div>
+      <div style={{'padding': '25px'}}>
+        <div className="chart-div" style={{'padding-bottom': '30px'}}>
+          <div>
+            <h2 className="text-center">Test results breakdown</h2>
+            <DatasetChart alias="elementary/dashboard/doughnuts/test-results-breakdown"/>
+          </div>
+          <div className="grey-border-right">
+            <h2 className="text-center">Tables health</h2>
+            <DatasetChart alias="elementary/dashboard/doughnuts/tables-health" />
+          </div>
+          <div>
+            <h2 className="text-center">Monitored tables</h2>
+            <DatasetChart alias="elementary/dashboard/doughnuts/monitored-tables" />
+          </div>
+        </div>
+        <div style={{'display':'flex', 'padding-bottom':'25px'}}>
+          <div style={{'border-top': '2px solid #D3D3D3', 'width': '100%'}}>
+          </div>
+        </div>
+        <div className="chart-div">
+          <div className="grey-border-right metric-width">
+            <h2 className="text-center">Freshness</h2>
+            <DatasetLink alias="elementary/dashboard/test-results-overview/freshness-test-results">
+              <DatasetChart alias="elementary/dashboard/metrics/freshness-metric"/>
+            </DatasetLink>
+          </div>
+          <div className="grey-border-right metric-width">
+            <h2 className="text-center">Volume</h2>
+              <DatasetLink alias="elementary/dashboard/test-results-overview/volume-test-results">
+                <DatasetChart alias="elementary/dashboard/metrics/volume-metric" />
+              </DatasetLink>
+          </div>
+          <div className="grey-border-right metric-width">
+            <h2 className="text-center">Schema Changes</h2>
+            <DatasetLink alias="elementary/dashboard/test-results-overview/schema-test-results">
+              <DatasetChart alias="elementary/dashboard/metrics/schema-metric" />
+            </DatasetLink>
+          </div>
+          <div className="grey-border-right metric-width">
+            <h2 className="text-center">Model Tests</h2>
+            <DatasetLink alias="elementary/dashboard/test-results-overview/dbt-tests-test-results">
+              <DatasetChart alias="elementary/dashboard/metrics/dbt-tests-metric" />
+            </DatasetLink>
+          </div>
+          <div className="metric-width">
+            <h2 className="text-center">Anomalies</h2>
+            <DatasetLink alias="elementary/dashboard/test-results-overview/anomalies-test-results">
+              <DatasetChart alias="elementary/dashboard/metrics/anomalies-metric" />
+            </DatasetLink>
+          </div>
+        </div>
+        <div style={{'display':'flex', 'padding-bottom':'25px'}}>
+        </div>
+        <div className="chart-div">
+          <div className="grey-box">
+            <h2 className="text-center">Unique Test Executions</h2>
+            <DatasetChart alias="elementary/dashboard/bars/unique-test-executions" />
+          </div>
+          <div style={{'padding-left': '25px'}}>
+          </div>
+          <div className="grey-box">
+            <h2 className="text-center">Test Failures</h2>
+            <DatasetChart alias="elementary/dashboard/bars/test-failures" />
+          </div>
+          <div style={{'padding-left': '25px'}}>
+          </div>
+          <div className="grey-box">
+            <h2 className="text-center">Tables with Failed Tests</h2>
+            <DatasetChart alias="elementary/dashboard/lines/tables-with-failed-tests" />
+          </div>
+        </div>
+      </div>
+    </div>
+  HOME_PAGE: dashboard
+  APP_MENU_ITEMS: |-
+    [
+      {"name": "dashboard", "faIcon": "chart-bar", "label": "Dashboard"},
+      {"name": "explore", "faIcon": "hashtag", "label": "Explore"},
+      {"name": "channels", "faIcon": "database", "label": "Channels"},
+      {"name": "library", "faIcon": "list", "label": "Library"},
+      {"name": "starred", "faIcon": "star", "label": "Starred"},
+      {"name": "help", "faIcon": "question-circle", "label": "Help"}
+    ]
+  DASHBOARD_PAGE_TITLE: Data Quality Dashboard
   WELCOME_DATASET_ALIAS: welcome
 default_data_store: Warehouse
 dataset_paths:
