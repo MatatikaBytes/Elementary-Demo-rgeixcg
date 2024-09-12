@@ -1,0 +1,44 @@
+{
+  "plugin_type": "files",
+  "name": "app-elementary",
+  "namespace": "elementary",
+  "variant": "matatika",
+  "label": "Elementary App",
+  "repo": "https://github.com/Matatika/app-elementary.git",
+  "pip_url": "git+https://github.com/Matatika/app-elementary@v0.1.0",
+  "description": "App Elementary, everything you need to get elementary up and running in your Matatika workspace.",
+  "logo_url": "https://app.matatika.com/assets/images/utility/elementary.png",
+  "requires": {
+    "transforms": [
+      {
+        "name": "dbt-elementary",
+        "variant": "matatika"
+      }
+    ],
+    "utilities": [
+      {
+        "name": "matatika",
+        "variant": "matatika"
+      },
+      {
+        "name": "dbt-test-results",
+        "variant": "matatika"
+      },
+      {
+        "name": "sendgrid",
+        "variant": "matatika"
+      },
+      {
+        "name": "notebook",
+        "variant": "matatika"
+      },
+      {
+        "name": "elementary",
+        "variant": "matatika"
+      }
+    ]
+  },
+  "update": {
+    "*.yml": "true"
+  }
+}

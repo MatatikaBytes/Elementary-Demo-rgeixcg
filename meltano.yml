@@ -18,6 +18,9 @@ plugins:
   - name: dbt-googleads
     variant: matatika
     pip_url: https://github.com/Matatika/dbt-tap-googleads@v0.4.0
+  - name: dbt-elementary
+    variant: matatika
+    pip_url: https://github.com/Matatika/dbt-elementary@v0.1.0
   transformers:
   - name: dbt
     variant: dbt-labs
@@ -32,6 +35,9 @@ plugins:
   - name: analyze-googleads
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-googleads@v0.5.0
+  - name: app-elementary
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/app-elementary@v0.1.0
   utilities:
   - name: matatika
     variant: matatika
@@ -39,3 +45,15 @@ plugins:
   - name: dbt-artifacts
     variant: matatika
     pip_url: git+https://github.com/Matatika/dbt-artifacts-ext.git
+  - name: dbt-test-results
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/prototype-dbt-test-results-ext@v0.0.1
+  - name: sendgrid
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/utility-sendgrid.git
+  - name: notebook
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/utility-notebook.git
+  - name: elementary
+    variant: matatika
+    pip_url: elementary-data[postgres,snowflake]==0.12.0 git+https://github.com/matatika/elementary-ext.git
