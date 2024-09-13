@@ -9,9 +9,9 @@ sources:
       - name: stream_campaign
         description: Source table for campaigns.
         tests:
+          # no timestamp, elementary will monitor without timestamp filters
           - elementary.volume_anomalies:
-              timestamp_column: "segments__date"
-              where_expression: "campaign_criterion__location__geo_target_constant in ('geoTargetConstants/2826')"
+              tags: ["elementary"]
         columns:
           - name: campaign__id
             description: Campaign primary key
@@ -44,5 +44,14 @@ sources:
         description: Source table of Google Ads campaign performance by gender and device
       - name: stream_campaign_performance_by_location
         description: Source table of Google Ads campaign performance by location
+        tests:
+          - elementary.volume_anomalies:
+              timestamp_column: "segments__date"
+              where_expression: "campaign_criterion__location__geo_target_constant in ('geoTargetConstants/2826')"
       - name: stream_campaign_performance
         description: Source table of Google Ads campaign performance
+        tests:
+          - elementary.volume_anomalies:
+              timestamp_column: "segments__date"
+      - name: stream_geo_target_constant
+        description: Source table geo

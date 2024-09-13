@@ -4,7 +4,7 @@ with stream_campaign_performance_by_location as (
     select * from {{ source('googleads_source', 'stream_campaign_performance_by_location') }}
 ),
 stream_geo_target_constant as (
-    select * from "{{var('schema')}}".stream_geo_target_constant
+    select * from {{ source('googleads_source', 'stream_geo_target_constant') }}
 ),
 campaign_performance_by_location as (
     select
