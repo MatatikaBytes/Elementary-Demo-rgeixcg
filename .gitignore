@@ -1,3 +1,4 @@
+transform/dbt_packages/
 /venv
 /.meltano
 .env

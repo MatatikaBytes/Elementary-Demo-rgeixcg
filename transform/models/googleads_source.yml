@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: googleads_source
+    description: Google ads source table created by Matatika's tap-googleads
+    schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+    tables:
+    tables:
+      - name: stream_campaign
+        description: Source table for campaigns.
+        tests:
+          - elementary.volume_anomalies:
+              timestamp_column: "segments__date"
+              where_expression: "campaign_criterion__location__geo_target_constant in ('geoTargetConstants/2826')"
+        columns:
+          - name: campaign__id
+            description: Campaign primary key
+            tests:
+              - not_null
+          - name: campaign__name
+            description: A non unique campaign name
+            tests:
+              - not_null
+          - name: customer_id
+            description: Customer linked to the campaign
+            tests:
+              - not_null
+      - name: stream_adgroups
+        description: Source table for ad groups.
+        columns:
+          - name: ad_group__id
+            description: Ad group primary key
+            tests:
+              - not_null
+          - name: ad_group__name
+            description: A non unique ad group name
+            tests:
+              - not_null
+      - name: stream_adgroupsperformance
+        description: Source table of Google Ads ad group performance
+      - name: stream_campaign_performance_by_age_range_and_device
+        description: Source table of Google Ads campaign performance by age range and device
+      - name: stream_campaign_performance_by_gender_and_device
+        description: Source table of Google Ads campaign performance by gender and device
+      - name: stream_campaign_performance_by_location
+        description: Source table of Google Ads campaign performance by location
+      - name: stream_campaign_performance
+        description: Source table of Google Ads campaign performance

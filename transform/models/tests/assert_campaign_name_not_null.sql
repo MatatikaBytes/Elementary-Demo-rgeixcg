@@ -1,0 +1,2 @@
+-- given google adwords data
+-- expect all campaigns to have a name

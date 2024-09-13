@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: googleads_vw_ad_groups_performance
+    description: Google ads groups performance
+  - name: googleads_vw_campaign_performance_age_and_device
+    description: Google ads campaign performance by age range and device
+  - name: googleads_vw_campaign_performance_gender_and_device
+    description: Google ads campaign performance by gender and device
+  - name: googleads_vw_campaign_performance_location
+    description: Google ads campaign performance by location
+  - name: googleads_vw_campaign_performance
+    description: Google ads overall campaign performance
