@@ -13,4 +13,4 @@ meltano invoke dbt run-operation googleads_drop_google_ads_stream_tables || true
 meltano run tap-googleads "$LOADER"
 
 # run transforms
-meltano invoke dbt run -m tap_googleads
+meltano invoke dbt run
